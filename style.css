@@ -70,6 +70,7 @@ body {
     /* padding: 20px; */
     font-size: 2rem;
     color: var(--white-color);
+    text-decoration-color: #753b7e;
     font-weight: 500;
     margin-left: 40px;
 }
@@ -206,6 +207,9 @@ section {
 .home .profession-container {
     position: absolute;
     top: 50%;
+    padding-top: -900px;
+    padding-bottom:-1000px;
+    bottom:0%;
     right: 0;
     transform: translateY(-50%);
     /* transform translate prop */
@@ -222,8 +226,8 @@ section {
     position: absolute;
     /* position */
     top: 0;
-    right: 0;
-    left: 20%;
+    right: 20%;
+    left: 15%;
     width: 768px;
     height: 768px;
     /* background-color: beige; */
@@ -234,11 +238,6 @@ section {
     animation: professionRotate 7s ease-out infinite;
 }
 
-
-/* .profession  {
-    animation: professionRotate 7s ease-out infinite;
-    
-} */
 
 @keyframes professionRotate {
     0%,
@@ -336,7 +335,8 @@ span {
 .about-img img {
     border-radius: 50%;
     width: 40vh;
-    position: relative;
+    position: flex;
+    
     outline: 0.2rem solid var(--main-color);
     padding: 0.2rem;
 }
@@ -350,6 +350,7 @@ span {
     margin-top: 80px;
     margin-bottom: 190px;
     margin-left: -450px;
+    margin-right: 4px;
     /* background-color: red; */
 }
 
@@ -359,17 +360,13 @@ span {
     margin-top: -20px;
 }
 
-.about-content h2 {
-    text-align: left;
-    margin-top: 23px;
-    font-size: 20px;
-}
-
 .about-content p {
+    display: flexbox;
+    font-family: 'Montserrat';
     margin-top: 15px;
-    font-size: 1.6rem;
-    margin-left: 22px;
-    line-height: 1.5;
+    font-size: 2rem;
+    margin-left: 700px;
+    line-height: 1.9;
 }
 
 .services h2 {
