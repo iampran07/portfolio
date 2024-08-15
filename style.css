@@ -332,41 +332,99 @@ span {
     color: var(--main-color);
 }
 
-.about-img img {
-    border-radius: 50%;
-    width: 40vh;
-    position: flex;
-    
-    outline: 0.2rem solid var(--main-color);
-    padding: 0.2rem;
-}
-
 .about {
     display: flex;
-    justify-content: center;
-    /* text-align: center; */
-    align-items: center;
+    justify-content: space-between; /* Ensure space between image and paragraph */
+    align-items: center; /* Align items vertically to the center */
     gap: 4rem;
-    margin-top: 80px;
-    margin-bottom: 190px;
-    margin-left: -450px;
-    margin-right: 4px;
-    /* background-color: red; */
+    margin: 80px 4px 190px 45px;
+    position: relative; /* To position heading at the top-left */
 }
 
+/* Position the heading at the top-left corner */
 .heading {
     font-size: 4.5rem;
     text-align: left;
-    margin-top: -20px;
+    position: absolute; /* Positioning the heading */
+    top: -50px; /* Align at the top */
+    left: -690px; /* Align to the left */
+    margin-top: 0;
+}
+
+/* Container for the image and background design */
+.about-img {
+    position: relative;
+    width: 400px; /* Adjust photo size */
+    height: 400px;
+    margin: 50px; /* Adjust position of the entire container */
+    overflow: hidden; /* Ensure the image stays within its bounds */
+    left:-100px;
+    top:50px;
+}
+.waving-hand {
+    display: inline-block; /* Ensures the emoji behaves as an inline element */
+    font-size: 5rem; /* Adjust the size of the emoji */
+    animation: wave-animation 1.5s ease-in-out infinite; /* Animation settings */
+    transform-origin: 70% 70%; /* Control the pivot point for the waving effect */
+}
+
+/* Keyframes for the waving effect */
+@keyframes wave-animation {
+    0% { transform: rotate(0deg); }   /* Initial position */
+    15% { transform: rotate(15deg); } /* Waving to one side */
+    30% { transform: rotate(-10deg); }/* Waving to the other side */
+    45% { transform: rotate(12deg); } /* Return to original side */
+    60% { transform: rotate(-8deg); } /* Small wave back */
+    75% { transform: rotate(10deg); } /* Final wave motion */
+    100% { transform: rotate(0deg); } /* Return to neutral position */
+}
+/* The image itself as a square */
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    position: relative;
+    z-index: 2; /* Keep the image on top of the background */
+    transition: transform 1s ease, opacity 1s ease; /* Smooth transition */
+    border-radius:50px; /* Initial transparent border */
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0); /* Shadow on the bottom-right */
+}
+
+/* Background of multiple squares */
+.about-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Double the width to cover more area */
+    height: 200%;
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 40px 40px; /* Size of the squares */
+    z-index: 1; /* Keep squares behind the image */
+    opacity: 0; /* Hidden initially */
+    transition: opacity 1s ease-in-out; /* Transition effect */
+}
+
+/* Transition effect for the image and background on load */
+body.loaded .about-img img {
+    transform: scale(1.1); /* Slightly scale the image on load */
+}
+
+body.loaded .about-img::before {
+    opacity: 1; /* Show the background of squares */
 }
 
 .about-content p {
-    display: flexbox;
     font-family: 'Montserrat';
-    margin-top: 15px;
     font-size: 2rem;
-    margin-left: 700px;
+    margin-left: 50px; /* Adjust margin for proper spacing */
     line-height: 1.9;
+    text-align: justify;
+    width: 500px; /* Control the width of the paragraph */
 }
 
 .services h2 {
@@ -422,6 +480,7 @@ span {
 .services-box p {
     font-size: 1.5rem;
     margin: 1rem 0 3rem;
+    font-family: system-ui, -apple-system;
 }
 
 .portfolio {
